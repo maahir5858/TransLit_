@@ -1,16 +1,27 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "How it works", href: "#how-it-works" },
   { label: "Features", href: "#features" },
-  { label: "Proof", href: "#proof" },
+  { label: "Library", href: "/library" },
+  { label: "Poetry", href: "/poetry" },
   { label: "Pricing", href: "#pricing" },
-  { label: "For Publishers", href: "#publishers" },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleNavClick = (href: string) => {
+    if (href.startsWith("/")) {
+      navigate(href);
+    } else {
+      window.location.hash = href;
+    }
+    setOpen(false);
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border" role="navigation" aria-label="Main navigation">
@@ -23,9 +34,9 @@ const Navbar = () => {
         <ul className="hidden md:flex items-center gap-8">
           {navLinks.map((l) => (
             <li key={l.href}>
-              <a href={l.href} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
+              <button onClick={() => handleNavClick(l.href)} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
                 {l.label}
-              </a>
+              </button>
             </li>
           ))}
           <li>
@@ -52,13 +63,12 @@ const Navbar = () => {
           <ul className="flex flex-col p-4 gap-3">
             {navLinks.map((l) => (
               <li key={l.href}>
-                <a
-                  href={l.href}
-                  className="block py-2 text-foreground/80 hover:text-primary transition-colors"
-                  onClick={() => setOpen(false)}
+                <button
+                  className="block w-full text-left py-2 text-foreground/80 hover:text-primary transition-colors"
+                  onClick={() => handleNavClick(l.href)}
                 >
                   {l.label}
-                </a>
+                </button>
               </li>
             ))}
             <li>

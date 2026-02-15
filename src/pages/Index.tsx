@@ -9,6 +9,7 @@ import ForPublishers from "@/components/ForPublishers";
 import Pricing from "@/components/Pricing";
 import FAQs from "@/components/FAQs";
 import Footer from "@/components/Footer";
+import HomepageTeasers from "@/components/HomepageTeasers";
 
 const Index = () => {
   return (
@@ -20,6 +21,7 @@ const Index = () => {
         <HowItWorks />
         <ProofMoment />
         <Features />
+        <HomepageTeasers />
         <DemoWidget />
         <ForPublishers />
         <Pricing />
