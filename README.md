@@ -6,7 +6,7 @@ TransLit translates books into natural, culturally faithful editions — preserv
 **URL**: https://maahir5858-translit-repo.netlify.app/
 
 
-## Run this project loaclly
+### Run this project loaclly
 
 ```sh
 # Step 1: Clone the repository using the project's Git URL.
@@ -22,7 +22,7 @@ npm install
 npm run dev
 ```
 
-## What technologies are used for this project?
+### What technologies are used for this project?
 
 This project is built with:
 
