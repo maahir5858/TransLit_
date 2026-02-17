@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "How it works", href: "#how-it-works" },
-  { label: "Features", href: "#features" },
+  { label: "Home", href: "/" },
   { label: "Library", href: "/library" },
+  { label: "Try TransLit", href: "/app" },
   { label: "Poetry", href: "/poetry" },
   { label: "Pricing", href: "#pricing" },
 ];

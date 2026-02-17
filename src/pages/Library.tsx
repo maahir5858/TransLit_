@@ -20,7 +20,7 @@ import {
 import ReaderModeToggle, { type ReaderMode } from "@/components/ReaderModeToggle";
 import { useToast } from "@/hooks/use-toast";
 
-const genres: Genre[] = ["Poetry", "Fiction", "Philosophy", "Folklore"];
+const genres: Genre[] = ["Poetry", "Fiction", "Philosophy", "Folklore", "Classic", "Heritage"];
 
 const Library = () => {
   const navigate = useNavigate();
@@ -297,7 +297,7 @@ const Library = () => {
           {filtered.map((work) => (
             <button
               key={work.id}
-              onClick={() => setSelectedWork(work)}
+              onClick={() => navigate(`/book/${work.id}`)}
               className="text-left bg-card border border-border rounded-xl p-6 hover:shadow-lg transition-all hover:-translate-y-1 group"
             >
               <span className="text-4xl block mb-3">{work.coverEmoji}</span>
@@ -308,9 +308,15 @@ const Library = () => {
               <p className="text-sm text-foreground/70 line-clamp-2 mb-3">
                 {work.description[globalLang]}
               </p>
-              <div className="flex gap-2">
+              <div className="flex gap-2 flex-wrap">
                 <Badge variant="secondary" className="text-xs">{work.genre}</Badge>
                 <Badge variant="outline" className="text-xs">{work.region}</Badge>
+                {work.tags?.map((tag) => (
+                  <Badge key={tag} variant="outline" className="text-xs">{tag}</Badge>
+                ))}
+                {work.isFirstTranslation && (
+                  <Badge className="bg-accent text-accent-foreground text-xs">🆕 First Translation</Badge>
+                )}
               </div>
             </button>
           ))}
