@@ -12,6 +12,7 @@ import { useToast } from "@/hooks/use-toast";
 import EssencePanel from "@/components/book/EssencePanel";
 import EmotionalTracker from "@/components/book/EmotionalTracker";
 import VoiceSignature from "@/components/book/VoiceSignature";
+import VisualVerse, { VisualVerseToggle } from "@/components/book/VisualVerse";
 
 const BookReader = () => {
   const { id } = useParams<{ id: string }>();
@@ -30,6 +31,7 @@ const BookReader = () => {
   const [companionMessages, setCompanionMessages] = useState<{ role: "user" | "assistant"; content: string }[]>([]);
   const [companionLoading, setCompanionLoading] = useState(false);
   const [essenceMode, setEssenceMode] = useState(false);
+  const [visualVerseEnabled, setVisualVerseEnabled] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const getParagraphLang = (pId: string) => paragraphLangs[pId] || globalLang;
@@ -164,6 +166,7 @@ const BookReader = () => {
             <ArrowLeft size={18} /> Library
           </Button>
           <div className="flex items-center gap-3">
+            <VisualVerseToggle enabled={visualVerseEnabled} onChange={setVisualVerseEnabled} />
             <ReaderModeToggle mode={readerMode} onChange={setReaderMode} />
             <Button
               variant={essenceMode ? "default" : "outline"}
@@ -250,6 +253,14 @@ const BookReader = () => {
                       </p>
                     </div>
                   )}
+
+                  {/* VisualVerse illustration */}
+                  <VisualVerse
+                    paragraphId={p.id}
+                    paragraphText={p.text.en}
+                    genre={work.genre}
+                    enabled={visualVerseEnabled}
+                  />
 
                   {/* Per-paragraph controls */}
                   <div className="mt-4 flex flex-wrap items-center gap-2">
