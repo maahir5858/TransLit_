@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { BookOpen, Feather, Sparkles } from "lucide-react";
+import { BookOpen, Feather, Sparkles, ImageIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const teasers = [
@@ -18,6 +18,14 @@ const teasers = [
       "See the difference between literal translation and narrative-faithful translation. Feel the rhythm, not just the words.",
     cta: "See the Proof",
     href: "/poetry",
+  },
+  {
+    icon: <ImageIcon className="w-8 h-8 text-primary" />,
+    title: "VisualVerse — Stories You Can See",
+    description:
+      "As you read, TransLit transforms narrative into visual imagination — context-aware, culturally adaptive, and emotionally aligned AI illustrations.",
+    cta: "Try in Library",
+    href: "/library",
   },
   {
     icon: <Sparkles className="w-8 h-8 text-accent" />,

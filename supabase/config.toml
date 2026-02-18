@@ -8,3 +8,6 @@ verify_jwt = false
 
 [functions.reading-companion]
 verify_jwt = false
+
+[functions.visualverse]
+verify_jwt = false
